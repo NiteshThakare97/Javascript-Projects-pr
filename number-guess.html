@@ -30,10 +30,13 @@
 
         let attemptCount = 0;
 
+        // input id const created 
+        const inpField = document.getElementById("num");
+
         const gameOverbtn = function() {
             gameOver = true;
             document.getElementById("guessNum").innerHTML = "Start New Game";
-            document.getElementById("num").value = "";
+            inpField.value = "";
         }
 
         // Added this line for preGuess 
@@ -41,12 +44,14 @@
 
         function guess() {
             if (gameOver === false) {
-                let inpNum = document.getElementById("num").value.toString();
+                let inpNum = inpField.value.toString();
 
                 let result;
 
-                if (inpNum === "") {
+                if (inpNum == "") {
                     result = "Please enter something";
+                } else if (inpNum >= 101 || inpNum < 0 || inpNum == NaN) {
+                    result = "Enter Valid number";
                 } else {
                     if (inpNum == guessedNum) {
                         result = "Correct Match <br> GAME OVER";
@@ -61,6 +66,11 @@
                         }
                         attemptCount++;
                         checkAttempts();
+
+                        // Added this 2 line for preGuess only
+                        preGuess.push(inpNum);
+                        document.getElementById("pre-guess").innerHTML = preGuess.join(", ");
+                        console.log(preGuess);
                     }
                 }
 
@@ -71,13 +81,11 @@
                 let remainingAttempt = 10 - attemptCount;
                 document.getElementById("remAttmpt").innerHTML = remainingAttempt;
 
+
             } else {
                 newGame();
             }
 
-            // Added this 2 line for preGuess only
-            preGuess.push(inpNum);
-            document.getElementById("pre-guess").innerHTML = preGuess;
         }
 
         function checkAttempts() {
@@ -87,13 +95,22 @@
             }
         }
 
+        // Event for handling Enter key 
+        inpField.addEventListener("keydown", function(event) {
+            if (event.key == "Enter") {
+                guess();
+            }
+        });
+
         function newGame() {
-            document.getElementById("num").value = "";
+            inpField.value = "";
             document.getElementById("result").innerHTML = "";
             document.getElementById("guessNum").innerHTML = "Submit";
             document.getElementById("attempts").innerHTML = "";
             document.getElementById("remAttmpt").innerHTML = 10;
             document.getElementById("finalResult").innerHTML = "";
+            document.getElementById("pre-guess").innerHTML = "";
+            preGuess = [];
             attemptCount = 0;
             gameOver = false;
             guessedNum = Math.floor(Math.random() * 101);
