@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+</head>
+
+<body>
+    <!-- Calculator -->
+    <!-- <div>
+        <input type="number" placeholder="enter first value" id="firstNum">
+        <input type="text" placeholder="symbol" id="symbol">
+        <input type="number" placeholder="enter second value" id="secNum">
+        <button onclick="calculate()">Submit</button>
+    </div>
+    <div>
+        <h2 id="res"></h2>
+    </div>
+    <script>
+        function calculate() {
+            const a = parseFloat(document.getElementById("firstNum").value);
+            const b = parseFloat(document.getElementById("secNum").value);
+            const c = document.getElementById("symbol").value;
+
+            let result;
+
+            if (c === '+') {
+                result = a + b;
+            } else if (c === '-') {
+                result = a - b;
+            } else if (c === '*') {
+                result = a * b;
+            } else if (c === '/') {
+                if (b === 0) {
+                    result = "Cannot divide by 0";
+                } else {
+                    result = a / b;
+                }
+            } else {
+                result = "Invalid Symbol"
+            }
+
+            document.getElementById('res').innerHTML = `Result: ${result}`;
+        }
+    </script> -->
+
+
+
+    <!-- Palindrome checker  -->
+    <input type="text" placeholder="enter Palindrome" id="palindrome">
+    <button onclick="check()">Check</button>
+
+    <div>
+        <h2 id="res"></h2>
+    </div>
+
+    <script>
+        function check() {
+            const text = document.getElementById("palindrome").value.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const newText = text.split('').reverse().join('');
+
+            if (text === "") {
+                return document.getElementById("res").innerHTML = "Please enter something!!"
+            }
+
+            let result;
+
+            if (text === newText && text !== "") {
+                result = "It is a Palindrome"
+            } else {
+                result = "Not a Palindrome"
+            }
+
+            document.getElementById("res").innerHTML = text + ':' + " " + result;
+        }
+    </script>
+
+    <!-- <script>
+        function check() {
+            const text = document.getElementById("palindrome").value.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const newText = text.split('').reverse().join('');
+
+            let result;
+
+            if (text === newText && text !== "") {
+                result = "It is a palindrome";
+            } else if (text !== newText && text !== "") {
+                result = "Not a palindrome";
+            } else {
+                result = "Please enter something"
+            }
+
+            document.getElementById("res").innerHTML = text + ":" + " " + result;
+
+        }
+    </script> -->
+</body>
+
+</html>

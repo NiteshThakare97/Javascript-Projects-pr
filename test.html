@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1. Even Odd  -->
+    <!-- <p id="demo"></p>
+    <script>
+        let num = 19945;
+        let res = "It is Odd no.";
+
+        if (num % 2 == 0) {
+            res = "It is Even no.";
+        }
+
+        document.getElementById("demo").innerHTML = res;
+        alert(document.getElementById("demo").innerHTML = res);
+    </script> -->
+
+    <!-- 2. Temperature convertor -->
+    <!-- <div><input type="number" id="celcius" placeholder="enter number"> C</div>
+    <button onclick="conFar()">Convert</button>
+    <div>Temperature is =
+        <h2 id="farenheit"></h2>
+    </div>
+
+    <script>
+        function conFar() {
+            let celcius = document.getElementById("celcius").value;
+            let far = (celcius * 9 / 5) + 32;
+            // let res = Number(far);
+            document.getElementById("farenheit").innerHTML = far;
+        }
+    </script> -->
+
+    <!-- HTML -->
+    <input id="celsius" type="number" placeholder="Celsius" oninput="convertC()">
+    <input id="fahrenheit" type="number" placeholder="Fahrenheit" oninput="convertF()">
+    <p id="demo"></p>
+
+    <script>
+        // JavaScript
+        function convertC() {
+            let c = document.getElementById("celsius").value;
+            let f = (c * 9 / 5) + 32;
+            // Use toFixed(2) to round to two decimal places
+            document.getElementById("fahrenheit").value = parseFloat(f.toFixed(2));
+        }
+
+        function convertF() {
+            let f = document.getElementById("fahrenheit").value;
+            let c = (f - 32) * 5 / 9;
+            document.getElementById("celsius").value = parseFloat(c.toFixed(2));
+        }
+    </script>
+
+    <script>
+        const fruits = ["Hanana", "Orange", "Mango", "Apple"];
+        const tree = new Array("Banyan", "Peepal", "Tulsi");
+        let sum = new Array(fruits + "," + tree);
+        document.getElementById("demo").innerHTML = sum;
+    </script>
+
+</body>
+
+</html>

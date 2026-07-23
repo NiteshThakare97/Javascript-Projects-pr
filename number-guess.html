@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number guessing game</title>
+</head>
+
+<body>
+    <div class="card" style="text-align: center;">
+        <h2>Number guessing game</h2>
+        <h3>Guess a number between 1 and 100:</h3>
+        <div>
+            <input type="number" id="num">
+        </div>
+        <br>
+        <button onclick="guess()" id="guessNum"> Submit </button>
+        <p id="result"></p>
+        <p>Remaining Attempts: <span id="remAttmpt">10</span> &nbsp; &nbsp; &nbsp; <span id="attempts"></span></p>
+        <p>Previous Guess: <span id="pre-guess"></span></p>
+        <h4 id="finalResult"></h4>
+    </div>
+
+    <script>
+        let gameOver = false;
+
+        let guessedNum = Math.floor(Math.random() * 101);
+        console.log(guessedNum);
+
+        let attemptCount = 0;
+
+        const gameOverbtn = function() {
+            gameOver = true;
+            document.getElementById("guessNum").innerHTML = "Start New Game";
+            document.getElementById("num").value = "";
+        }
+
+        // Added this line for preGuess 
+        let preGuess = [];
+
+        function guess() {
+            if (gameOver === false) {
+                let inpNum = document.getElementById("num").value.toString();
+
+                let result;
+
+                if (inpNum === "") {
+                    result = "Please enter something";
+                } else {
+                    if (inpNum == guessedNum) {
+                        result = "Correct Match <br> GAME OVER";
+                        gameOverbtn();
+                        document.getElementById("finalResult").innerHTML = "You Win!!";
+                        attemptCount++;
+                    } else {
+                        if (inpNum > guessedNum) {
+                            result = "Guess is too HIGH";
+                        } else if (inpNum < guessedNum) {
+                            result = "Guess is too LOW";
+                        }
+                        attemptCount++;
+                        checkAttempts();
+                    }
+                }
+
+                document.getElementById("result").innerHTML = result;
+
+                document.getElementById("attempts").innerHTML = "Attempts: " + attemptCount;
+
+                let remainingAttempt = 10 - attemptCount;
+                document.getElementById("remAttmpt").innerHTML = remainingAttempt;
+
+            } else {
+                newGame();
+            }
+
+            // Added this 2 line for preGuess only
+            preGuess.push(inpNum);
+            document.getElementById("pre-guess").innerHTML = preGuess;
+        }
+
+        function checkAttempts() {
+            if (attemptCount >= 10) {
+                gameOverbtn();
+                document.getElementById("finalResult").innerHTML = "You Lose!! <br> Correct guess is: " + guessedNum;
+            }
+        }
+
+        function newGame() {
+            document.getElementById("num").value = "";
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("guessNum").innerHTML = "Submit";
+            document.getElementById("attempts").innerHTML = "";
+            document.getElementById("remAttmpt").innerHTML = 10;
+            document.getElementById("finalResult").innerHTML = "";
+            attemptCount = 0;
+            gameOver = false;
+            guessedNum = Math.floor(Math.random() * 101);
+            console.log(guessedNum);
+        }
+    </script>
+
+</body>
+
+</html>
