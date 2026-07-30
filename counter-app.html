@@ -5,22 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Counter App</title>
-    <script src="counter-app.js"></script>
 </head>
 
 <body style="text-align: center;">
-    <h2>Counter App</h2>
-    <div id="box">
-        <h1 id="counter">0</h1>
-    </div>
-    <div>
-        <button id="increase" onclick="add()">Increase</button>
-        <button id="reset" onclick="reset()">Reset</button>
-        <button id="reduce" onclick="reduce()">Decrease</button>
-    </div>
+
     <style>
         #box {
-            background-color: red;
+            background-color: #2f2a2a;
             width: 80px;
             height: 80px;
             margin: auto auto 20px;
@@ -40,7 +31,7 @@
             background-color: green;
         }
         
-        #reset {
+        .bg-blue {
             background-color: blue;
         }
         
@@ -48,6 +39,27 @@
             background-color: red;
         }
     </style>
+
+    <!-- Main body starts  -->
+    <h2>Counter App</h2>
+    <div id="box">
+        <h1 id="counter"></h1>
+    </div>
+
+    <div>
+        <button id="increase" onclick="add()">Increase </button>
+        <button class="bg-blue" id="reset" onclick="reset()">Reset</button>
+        <button id="reduce" onclick="reduce()">Decrease</button>
+    </div>
+
+    <div>
+        <p>Enter Value to increase or decrease the number by <input id="number" type="number" required></input>
+        </p>
+        <button class="bg-blue" onclick="sum()">Sum</button>
+    </div>
+
+    <script src="counter-app.js"></script>
+
 </body>
 
 </html>
