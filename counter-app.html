@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <script src="counter-app.js"></script>
+</head>
+
+<body style="text-align: center;">
+    <h2>Counter App</h2>
+    <div id="box">
+        <h1 id="counter">0</h1>
+    </div>
+    <div>
+        <button id="increase" onclick="add()">Increase</button>
+        <button id="reset" onclick="reset()">Reset</button>
+        <button id="reduce" onclick="reduce()">Decrease</button>
+    </div>
+    <style>
+        #box {
+            background-color: red;
+            width: 80px;
+            height: 80px;
+            margin: auto auto 20px;
+            h1 {
+                color: #fff;
+                padding: 27%;
+            }
+        }
+        
+        button {
+            border: none;
+            color: #fff;
+            padding: 6px 10px;
+        }
+        
+        #increase {
+            background-color: green;
+        }
+        
+        #reset {
+            background-color: blue;
+        }
+        
+        #reduce {
+            background-color: red;
+        }
+    </style>
+</body>
+
+</html>
