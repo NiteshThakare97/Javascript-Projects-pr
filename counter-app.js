@@ -2,48 +2,27 @@ const counter = document.getElementById("counter");
 let currentCount = 0;
 counter.innerHTML = currentCount;
 
-const changeColor = function() {
-    if (currentCount == 0) {
+const updateDisplay = function() {
+    counter.innerHTML = currentCount;
+    if (currentCount === 0) {
         counter.style.color = "white";
     } else if (currentCount >= 1) {
         counter.style.color = "#3fd93f";
     } else {
         counter.style.color = "red";
     }
-}
 
-// Increase or decrease by entered value 
-const number = document.getElementById("number");
-let inpNum;
-number.value = inpNum;
-
-const inputNum = function() {
-    if (inpNum == "") {
-        inpNum = 1;
-    } else {
-        inpNum;
-    }
-}
-
-const sum = function() {
-    inputNum();
-    currentCount = currentCount + inpNum;
-    counter.innerHTML = currentCount;
-    changeColor();
+    error.innerHTML = "";
 }
 
 function add() {
-    // inputNum();
-    // currentCount += inpNum;
     currentCount++;
-    counter.innerHTML = currentCount;
-    changeColor();
+    updateDisplay();
 }
 
 const reset = function() {
     currentCount = 0;
-    counter.innerHTML = currentCount;
-    changeColor();
+    updateDisplay();
 }
 
 const reduce = function() {
@@ -56,6 +35,21 @@ const reduce = function() {
     // }
 
     currentCount--;
-    counter.innerHTML = currentCount;
-    changeColor();
+    updateDisplay();
+}
+
+// Increase or decrease by entered value 
+const error = document.getElementById("error");
+const numberInput = document.getElementById("number");
+
+const sum = function() {
+    // let number = numberInput.value;
+    let inpNum = parseInt(numberInput.value);
+
+    if (isNaN(inpNum)) {
+        error.innerHTML = "Please enter valid number";
+    } else {
+        currentCount = currentCount + inpNum;
+        updateDisplay();
+    }
 }
