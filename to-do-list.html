@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+</head>
+
+<body>
+    <style>
+        .card,
+        #taskList li {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        #taskList {
+            margin: 0px;
+            padding: 0%;
+        }
+        
+        #taskList li {
+            margin: 0px auto 10px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 10px;
+        }
+        
+        .newtask {
+            display: flex;
+        }
+        
+        li button {
+            background-color: blue;
+            border-radius: 5px;
+            padding: 3px 7px;
+            color: #fff;
+            border: none;
+            margin-left: 10px;
+        }
+    </style>
+
+    <div class="card" style="width: 18rem; text-align: center;">
+        <div class="card-body">
+            <h1 class="card-title">To do List</h1>
+            <div>
+                <input type="text" id="taskInput" placeholder="Enter a new task...">
+                <button id="addTaskBtn" onclick="addTask()">Add Task</button>
+            </div>
+            <p id="inputerror"></p>
+            <ul id="taskList">
+
+            </ul>
+        </div>
+
+    </div>
+
+
+
+    <script src="to-do-list.js"></script>
+</body>
+
+</html>
